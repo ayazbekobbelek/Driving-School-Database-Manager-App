@@ -69,6 +69,7 @@ public class StudentsData extends AbstractTableModel {
 
     public void addStudent(String name, String surname, String phoneNumber, int carID, int instructorID, String status) {
             Object[] temp;
+            // read data from the cars.dat and instructors.dat in order to get their id numbers
         try {
             carData = new CarData();
             instructorsData = new InstructorsData();
@@ -81,18 +82,23 @@ public class StudentsData extends AbstractTableModel {
         } catch(Exception ex) {
             ex.printStackTrace();
         }
+        // if the table is empty first id nubmer will be 0
         if (students.size() == 0) {
             temp = new Object[]{studentID,name, surname, phoneNumber , carID, instructorID, LocalDate.now(), status};
 
         }
+        // if not last raw id +1
         else {
             int tempint = (int) students.get(students.size() - 1)[0];
             temp = new Object[]{tempint+1, name, surname, phoneNumber , carID, instructorID, LocalDate.now(), status};
         }
+        // if in car's and insturctor's database exists such as carID and instructorID
+        // add the data to the table
         if (carData.getAllId().contains(carID) && instructorsData.getAllId().contains(instructorID)) {
             students.add(temp);
             studentID += 1;
         }
+        // if not show the error message
         else if (!carData.getAllId().contains(carID)) {
             JOptionPane.showMessageDialog(null,"No such car");
         }
@@ -103,6 +109,8 @@ public class StudentsData extends AbstractTableModel {
 
     }
 
+    //delete raw
+
     public void deleteStudent (String id) {
         int intID = Integer.parseInt(id);
         for(int i = 0; i < students.size(); i++) {
@@ -112,6 +120,8 @@ public class StudentsData extends AbstractTableModel {
             }
         }
     }
+
+    // Get all id number of students
 
     public List<Object> getAllId() {
         List<Object> temp = new ArrayList<>();

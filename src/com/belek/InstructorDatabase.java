@@ -12,10 +12,13 @@ public class InstructorDatabase extends JFrame implements Database {
     @Override
     public void initComponents() {
         this.setLayout(new BorderLayout());
+        //-------------------------Table-------------------------
         JTable jTable = new JTable(data);
         jTable.setFillsViewportHeight(true);
         JScrollPane sp = new JScrollPane(jTable);
         this.add(sp, BorderLayout.EAST);
+        //--------------------------------------------------
+
         // --------Menu bar---------------------------
         JMenuBar menuBar = new JMenuBar();
         JMenu menu = new JMenu("Go to");
@@ -44,6 +47,8 @@ public class InstructorDatabase extends JFrame implements Database {
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
 
+        //-------------------------Labels--------------------------------------------------
+
         JLabel id = new JLabel("ID: ");
         id.setBounds(30,15,300,30);
 
@@ -62,6 +67,8 @@ public class InstructorDatabase extends JFrame implements Database {
         JLabel l6 = new JLabel("SSN: ");
         l6.setBounds(30,190, 300,30);
 
+        //-------------------------TextFields--------------------------------------------------
+
         JTextField idTextField = new JTextField();
         idTextField.setBounds(130, 15, 190,30 );
 
@@ -79,6 +86,11 @@ public class InstructorDatabase extends JFrame implements Database {
 
         JTextField ssn = new JTextField(10);
         ssn.setBounds(130, 190, 180, 30);
+
+        //----------------------------------------------------------------------------------------------------
+
+
+        //-------------------------Buttons--------------------------------------------------
 
 
         JButton addButton = new JButton("New Instructor");
@@ -106,7 +118,8 @@ public class InstructorDatabase extends JFrame implements Database {
         });
         deleteButton.setBounds(30, 260, 200, 30);
 
-        //button.setBounds(130, 225, 50,30);
+        //----------------------------------------------------------------------------------------------------
+
         JLabel fill = new JLabel();
         panel.add(id); panel.add(idTextField);
         panel.add(l1); panel.add(nameField);
@@ -126,6 +139,8 @@ public class InstructorDatabase extends JFrame implements Database {
         super("Instructor Database");
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        // read data from the instructor.dat file
 
         try {
             data = new InstructorsData();
@@ -161,6 +176,7 @@ public class InstructorDatabase extends JFrame implements Database {
             }
         });
 
+        // create window
         setMinimumSize(new Dimension(800, 400));
         initComponents();
         pack();

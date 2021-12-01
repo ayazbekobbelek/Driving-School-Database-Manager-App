@@ -13,10 +13,13 @@ public class StudentDatabase extends JFrame implements Database {
     @Override
     public void initComponents() {
         this.setLayout(new BorderLayout());
+        //-------------------------Table-------------------------
         JTable jTable = new JTable(data);
         jTable.setFillsViewportHeight(true);
         JScrollPane sp = new JScrollPane(jTable);
         this.add(sp, BorderLayout.EAST);
+        //---------------------------------------------------------------------------
+
         // --------Menu bar---------------------------
         JMenuBar menuBar = new JMenuBar();
         JMenu menu = new JMenu("Go to");
@@ -44,6 +47,7 @@ public class StudentDatabase extends JFrame implements Database {
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
 
+        //-------------------------Labels--------------------------------------------------
         JLabel id = new JLabel("ID: ");
         id.setBounds(30,15,300,30);
 
@@ -64,7 +68,9 @@ public class StudentDatabase extends JFrame implements Database {
 
         JLabel l7 = new JLabel("Status");
         l7.setBounds(30, 225, 300,40);
+        //----------------------------------------------------------------------------------------------------
 
+        //-------------------------TextFields---------------------------------------------------------------------------
         JTextField idTextField = new JTextField();
         idTextField.setBounds(130, 15, 190,30 );
 
@@ -83,8 +89,12 @@ public class StudentDatabase extends JFrame implements Database {
         JTextField instructorIdField = new JTextField(10);
         instructorIdField.setBounds(130, 190, 180, 30);
 
+        //----------------------------------------------------------------------------------------------------
+
         JComboBox comboBox = new JComboBox(status);
         comboBox.setBounds(130, 225, 100, 30);
+
+        //-------------------------Buttons--------------------------------------------------
 
         JButton addButton = new JButton("New Student");
         addButton.addActionListener(new ActionListener() {
@@ -110,6 +120,7 @@ public class StudentDatabase extends JFrame implements Database {
             }
         });
         deleteButton.setBounds(30, 295, 200, 30);
+        //--------------------------------------------------------------------------------------------------------------
 
 
         JLabel fill = new JLabel();
@@ -132,7 +143,7 @@ public class StudentDatabase extends JFrame implements Database {
         super("Students Database");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-
+        //load data from students.dat
         try {
             data = new StudentsData();
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream("students.dat"));
@@ -168,7 +179,7 @@ public class StudentDatabase extends JFrame implements Database {
         });
 
 
-
+        //create a window
         setMinimumSize(new Dimension(800, 400));
         initComponents();
         pack();

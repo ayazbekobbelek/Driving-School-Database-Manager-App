@@ -9,6 +9,7 @@ public class AdminMainMenu extends JFrame {
     public void adminMainMenu() {
         JPanel adminMainMenu = new JPanel();
         this.setLayout(new BorderLayout());
+        // Open the corresponding database when button is pressed, and close the AdminMainMenu window
         JButton students_database = new JButton("Students Database");
         students_database.addActionListener(new ActionListener() {
             @Override
@@ -18,6 +19,7 @@ public class AdminMainMenu extends JFrame {
 
             }
         });
+
         JButton instructors_database = new JButton("Instructors Database");
         instructors_database.addActionListener(new ActionListener() {
             @Override
@@ -27,6 +29,7 @@ public class AdminMainMenu extends JFrame {
                 InstructorDatabase instructorDatabase = new InstructorDatabase();
             }
         });
+
         JButton cars_database = new JButton("Cars database");
         cars_database.addActionListener(new ActionListener() {
             @Override

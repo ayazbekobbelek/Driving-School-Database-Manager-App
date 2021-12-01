@@ -43,11 +43,11 @@ public class LoginFrame extends JFrame {
                 String username = F_user.getText();
                 String password = F_pass.getText();
 
-                if(username.equals(""))
+                if(username.equals("")) //When username field is empty
                 {
                     JOptionPane.showMessageDialog(null,"Please enter username");
                 }
-                else if(password.equals(""))
+                else if(password.equals("")) // When password field is empty
                 {
                     JOptionPane.showMessageDialog(null,"Please enter password");
                 }

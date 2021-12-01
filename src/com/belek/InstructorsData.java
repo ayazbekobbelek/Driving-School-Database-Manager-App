@@ -64,6 +64,7 @@ public class InstructorsData extends AbstractTableModel {
 
     public void addInstructor(String name, String surname, String phoneNumber, String taxID, String ssn) {
         Object[] temp;
+        // read from the Students file, in order to get their IDs
         try {
             studentsData = new StudentsData();
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream("students.dat"));
@@ -73,13 +74,16 @@ public class InstructorsData extends AbstractTableModel {
         } catch(Exception ex) {
             ex.printStackTrace();
         }
+        // Saving IDs into the stringBuilder
         StringBuilder sb = new StringBuilder();
         for (Object s: studentsData.getAllId()) {
             sb.append(s);
         }
+        // If the table is empty, first id will 0
         if (instructors.size() == 0) {
             temp = new Object[]{instructorID ,name, surname, phoneNumber , taxID, ssn, sb.toString()};
         }
+        // If not first id will be last raw ID +1
         else {
             int tempint = (int) instructors.get(instructors.size() - 1)[0];
             temp = new Object[]{tempint+1 ,name, surname, phoneNumber , taxID, ssn,sb.toString() };
@@ -88,7 +92,8 @@ public class InstructorsData extends AbstractTableModel {
         instructors.add(temp);
         instructorID += 1;
     }
-
+    //delete the raw in the table
+    //search by id number
     public void deleteInstructor (String id) {
         int intID = Integer.parseInt(id);
         for(int i = 0; i < instructors.size(); i++) {
@@ -98,7 +103,7 @@ public class InstructorsData extends AbstractTableModel {
             }
         }
     }
-
+    // getting all ID numbers from the instructor table
     public List<Object> getAllId() {
         List<Object> temp = new ArrayList<>();
         for (Object[] car : instructors) {

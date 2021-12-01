@@ -13,12 +13,14 @@ public class CarDatabase extends JFrame implements Database {
     @Override
     public void initComponents() {
         this.setLayout(new BorderLayout());
+        // -------------------------Table--------------------------------------------
         JTable jTable = new JTable(data);
         jTable.setFillsViewportHeight(true);
         JScrollPane sp = new JScrollPane(jTable);
         this.add(sp, BorderLayout.EAST);
+        //---------------------------------------------------------------------------
 
-        // --------Menu bar---------------------------
+        // -------------------------Menu bar----------------------------------------------------
         JMenuBar menuBar = new JMenuBar();
         JMenu menu = new JMenu("Go to");
         JMenuItem m1 = new JMenuItem("Instructor Database");
@@ -47,6 +49,8 @@ public class CarDatabase extends JFrame implements Database {
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
 
+        // -------------------------Labels-------------------------
+
         JLabel id = new JLabel("ID: ");
         id.setBounds(30,15,300,30);
 
@@ -55,6 +59,10 @@ public class CarDatabase extends JFrame implements Database {
 
         JLabel l2 = new JLabel("Brand: ");
         l2.setBounds(30,85, 300,40);
+
+        //---------------------------------------------------------------------------
+
+        //-------------------------TextFields-------------------------
 
         JTextField idTextField = new JTextField();
         idTextField.setBounds(130, 15, 190,30 );
@@ -65,6 +73,9 @@ public class CarDatabase extends JFrame implements Database {
         JTextField brandField = new JTextField(6);
         brandField.setBounds(130, 85, 180, 30);
 
+        //---------------------------------------------------------------------------
+
+        //-------------------------Buttons--------------------------------------------------
 
         JButton addButton = new JButton("New Car");
         addButton.addActionListener(new ActionListener() {
@@ -87,6 +98,8 @@ public class CarDatabase extends JFrame implements Database {
         });
         deleteButton.setBounds(30, 155, 200, 30);
 
+        //---------------------------------------------------------------------------
+
         JLabel fill = new JLabel();
         panel.add(id); panel.add(idTextField);
         panel.add(l1); panel.add(licenseField);
@@ -103,7 +116,7 @@ public class CarDatabase extends JFrame implements Database {
         super("Car Database");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-
+        //Read from the file
         try {
             data = new CarData();
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream("cars.dat"));
@@ -139,8 +152,7 @@ public class CarDatabase extends JFrame implements Database {
         });
 
 
-
-
+        //Create a window
         setMinimumSize(new Dimension(800, 400));
         initComponents();
         pack();
