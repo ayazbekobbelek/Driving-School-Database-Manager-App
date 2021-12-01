@@ -1,6 +1,5 @@
 package com.belek;
 
-import java.awt.*;
 
 
 public class Main {
