@@ -11,7 +11,7 @@ import java.util.*;
 public class CarData extends AbstractTableModel {
 
 
-    public List<Object[]> cars = new ArrayList<Object[]>();
+    public List<Object[]> cars = new ArrayList<>();
 
     private int carID = 0;
     String[] columnNames = {"ID","License Plate", "Brand", "Usable"};
