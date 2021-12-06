@@ -24,11 +24,11 @@ class StudentsDataTest {
     void addStudent() {
         studentsData.addStudent("Belek", "Ayazbekov", "+36205732904",
                 0,0,"Active");
-        assertEquals("[1, Belek, Ayazbekov, +36205732904, 0, 0, 2021-12-01, Active]",
+        assertEquals("[1, Belek, Ayazbekov, +36205732904, 0, 0, 2021-12-02, Active]",
                 Arrays.toString(studentsData.students.get(studentsData.students.size()-1)));
         studentsData.addStudent("Abdel", "Akmasadykov", "+36205832904",
                 0,0,"Active");
-        assertEquals("[2, Abdel, Akmasadykov, +36205832904, 0, 0, 2021-12-01, Active]",
+        assertEquals("[2, Abdel, Akmasadykov, +36205832904, 0, 0, 2021-12-02, Active]",
                 Arrays.toString(studentsData.students.get(studentsData.students.size()-1)));
     }
 
@@ -43,7 +43,7 @@ class StudentsDataTest {
         //delete the last student
         studentsData.deleteStudent("2");
 
-        assertEquals("[1, Belek, Ayazbekov, +36205732904, 0, 0, 2021-12-01, Active]",
+        assertEquals("[1, Belek, Ayazbekov, +36205732904, 0, 0, 2021-12-02, Active]",
                 Arrays.toString(studentsData.students.get(studentsData.students.size()-1)),
                 "Now last element should be equal to the element that we added first in this test");
     }
